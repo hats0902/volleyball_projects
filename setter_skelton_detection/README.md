@@ -83,12 +83,12 @@ Google Colab環境でultralyticsライブラリで250 epoch学習を実施。
 
 ---
 
-# 実装
+# ソースコード
 
 | Step          | Notebook                  |
 | ------------- | ------------------------- |
-| データセット作成      | `making dataset.ipynb`    |
-| ファインチューニング・評価 | `finetune_yolopose.ipynb` |
+| データセット作成      | [`making dataset.ipynb`](https://github.com/hats0902/volleyball_projects/blob/main/setter_skelton_detection/making%20dataset.ipynb  ) |
+| ファインチューニング・評価 | [`finetune_yolopose.ipynb`](https://github.com/hats0902/volleyball_projects/blob/main/setter_skelton_detection/finetune_yolopose.ipynb) |
 
 ---
 
@@ -122,6 +122,8 @@ Google Colab環境でultralyticsライブラリで250 epoch学習を実施。
 
 今回の実験から、一般的な人物姿勢推定モデルをそのまま使用するのではなく、セッター特有の姿勢を含むデータセットでファインチューニングすることで、骨格抽出性能を改善できる可能性が示された。  
 特に、セッターは「空中にいる」「腕を頭上に上げている」「身体の一部が隠れている」といった一般的な人物姿勢推定では扱いにくい特徴を持つ。そのため、セッターに特化したデータセットを用意することには一定の有効性があると考えられる。
+
+# 今後の作業
 
 一方で、まだ一部の画像ではkeypointの誤検出が発生している。
 
