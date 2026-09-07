@@ -8,11 +8,29 @@ Research project to predict where a volleyball setter will place a set, based on
 
 `setter_skelton_detection/README.md` has the full writeup (motivation, dataset creation, training results, and next steps — eventually feeding predicted skeletons into a toss-location model).
 
+## Live demo (separate repo)
+
+The fine-tuned model is served as a public Gradio demo at the Hugging Face
+Space [`hats0902/pose_estimation_model_for_volleyball`](https://huggingface.co/spaces/hats0902/pose_estimation_model_for_volleyball).
+That Space is backed by its **own independent git repository** (hosted on
+HF, not GitHub) — locally it lives as a sibling checkout at
+`../pose_estimation_model_for_volleyball` (i.e. next to this `volleyball_projects`
+checkout, not inside it). See that repo's own `CLAUDE.md` for how it's
+structured, deployed, and its ZeroGPU-specific constraints. An earlier
+version of the demo lived in a `setter_skelton_detection/demo/` subdirectory
+of *this* repo; that was abandoned in favor of the separate repo above (it
+caused files/`.gitattributes`(LFS) state to drift out of sync), so don't
+recreate `demo/` here.
+
+`weights/best.pt` in this repo (gitignored — see below) should be kept in
+sync with the copy in the demo repo's `weights/best.pt` manually when the
+model is retrained.
+
 ## Repo layout and what's actually tracked
 
 Only a subset of the working tree is under git — check `.gitignore` before assuming a directory is part of the repo:
 
-- `setter_skelton_detection/` — the active project. Tracked: `README.md`, the two notebooks, `images/plot.png`, `setter_keypoints.json`, and `VNL2025/{frames,affined,videos}/.gitkeep`.
+- `setter_skelton_detection/` — the active project. Tracked: `README.md`, the two notebooks, `images/plot.png`, `setter_keypoints.json`, and `VNL2025/{frames,affined,videos}/.gitkeep`. `weights/best.pt` (the fine-tuned model, ~6MB) is gitignored — see the top-level `.gitignore`.
   - `setter_skelton_detection/coco-annotator/` and `setter_skelton_detection/VNL2025/` (actual video/frame/affine-image content) are gitignored — they're large local working data, not repo content.
   - `coco-annotator` is the (gitignored) clone of the [jsbroks/coco-annotator](https://github.com/jsbroks/coco-annotator) tool used to manually annotate keypoints; annotated images live in `coco-annotator/datasets/setter_keypoints/`.
 - `volleyball_project/` — an earlier, broader iteration of the same idea. **Entirely gitignored** (see `.gitignore`); nothing under it is tracked. Its README explicitly says `setter_skelton_detection`'s README superseded it for the fine-tuning writeup. Treat it as legacy/reference only unless the user says otherwise.
@@ -38,3 +56,11 @@ python3 check_annotations.py   # defaults to setter_keypoints.json and coco-anno
 It flags: bboxes that extend outside the image's `width`/`height`, images with a bbox count other than 1, and mismatches between an annotation's recorded `num_keypoints` and the actual count of keypoints with `v > 0`. It also writes a per-annotation keypoint-count CSV (`annotation_check_report.csv`) for manual spot-checking. Override paths with `--json` / `--images-dir` / `--report-csv`.
 
 There is no build/lint/test tooling in this repo beyond that script — work here is notebook-driven, and correctness is verified by running cells in Colab and by this validation script.
+
+## Licensing
+
+Top-level `LICENSE` (repo root) is AGPL-3.0, because `ultralytics` (used for
+fine-tuning/inference here, and by the demo Space) is itself AGPL-3.0 and
+serving it over a network (the demo Space) triggers AGPL's source-availability
+requirement. See `setter_skelton_detection/README.md`'s "ライセンス" section
+for the reasoning.

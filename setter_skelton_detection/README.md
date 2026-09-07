@@ -1,5 +1,7 @@
 # セッター用骨格抽出モデルの開発
 
+デモ（Gradio）: [Hugging Face Space](https://huggingface.co/spaces/hats0902/pose_estimation_model_for_volleyball)
+
 ## 概要
 
 当初、バレーボールにおけるセッターの情報からトスの上がる位置を予測するモデルの開発を目的としていた。  
@@ -132,3 +134,13 @@ Google Colab環境でultralyticsライブラリで250 epoch学習を実施。
 * 学習データ数の多様性増（身体の向きや選手の数）
 * 最新モデル: YOLO26が発表されているためこちらも試す価値あり
 * ファインチューニング時のパラメーター調節
+
+---
+
+# ライセンス
+
+本プロジェクトのファインチューニング・推論には [Ultralytics](https://github.com/ultralytics/ultralytics)（yolo11n-pose）を使用しており、Ultralyticsは **AGPL-3.0** ライセンスです。AGPL-3.0はネットワーク経由でソフトウェアを利用可能にする場合（Webアプリとして公開する場合など）にも、対応するソースコードを利用者が入手できるようにすることを求めます。
+
+そのため本リポジトリも [AGPL-3.0](../LICENSE) の下で公開しています。ファインチューニング済みモデル（`weights/best.pt`）についても同様に、AGPL-3.0ライセンスのコードを用いて生成された成果物として扱います。
+
+骨格検出のデモアプリ（Gradio）は [Hugging Face Space](https://huggingface.co/spaces/hats0902/pose_estimation_model_for_volleyball) で公開しており、そのソースコードも同Space上で公開しています（AGPL-3.0）。
