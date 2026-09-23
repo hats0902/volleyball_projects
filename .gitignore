@@ -14,5 +14,6 @@ setter_skelton_detection/.DS_Store
 player_skelton_detection/baselite_test_output*
 player_skelton_detection/weights
 player_skelton_detection/yolo26n-pose.pt
+player_skelton_detection/README.pdf
 
 setter_skelton_detection
