@@ -10,3 +10,9 @@ setter_skelton_detection/weights/*.pt
 .claude/
 LICENSE
 setter_skelton_detection/.DS_Store
+
+player_skelton_detection/baselite_test_output*
+player_skelton_detection/weights
+player_skelton_detection/yolo26n-pose.pt
+
+setter_skelton_detection
