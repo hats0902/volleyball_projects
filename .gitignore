@@ -4,9 +4,16 @@ setter_skelton_detection/VNL2025
 setter_skelton_detection/README.pdf
 volleyball_project
 __pycache__/
-setter_skelton_detection/weights/best.pt
+setter_skelton_detection/weights/*.pt
 
 .DS_Store
 .claude/
 LICENSE
 setter_skelton_detection/.DS_Store
+
+player_skelton_detection/baselite_test_output*
+player_skelton_detection/weights
+player_skelton_detection/yolo26n-pose.pt
+player_skelton_detection/README.pdf
+
+setter_skelton_detection
