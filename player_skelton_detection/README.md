@@ -82,7 +82,7 @@ Live demo: [pose_estimation_model_for_volleyball](https://huggingface.co/spaces/
 | ファインチューニング前 | ファインチューニング後 |
 | --- | --- |
 | <img src="images/before_after_6_before.jpg" width="360"> | <img src="images/before_after_6_after.jpg" width="360"> |
-| 検出2件（confidence 0.32, 0.43）。**トスを上げているセッターは検出漏れ** | 検出7件（confidence 0.37〜0.86）。**トスを上げているセッターも検出に成功** |
+| 検出2件（confidence 0.32, 0.43）。**手前のコートの選手は検出漏れ** | 検出7件（confidence 0.37〜0.86）。**手を上や横に上げている選手も検出成功** |
 
 いずれの画像も、ファインチューニング前は検出数・confidenceともに低く、特に2例目ではトス中のセッター本人やジャンプ直前の選手が検出できていなかった。
 一部骨格の座標が間違っていることはあるものの、ファインチューニング後は検出数・confidenceが大きく向上し、選手を正しく検出できている。  
